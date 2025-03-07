@@ -45,7 +45,6 @@ body, html {
   padding: 0;
 }
 
-
 .nav-links a:hover {
   color: #6a11cb;
 }
@@ -94,7 +93,6 @@ body, html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 10px auto;
 }
 
 .styled-input {
@@ -165,7 +163,7 @@ footer {
     position: absolute;
     top: 60px;
     right: 20px;
-    background: rgba(0, 0, 0, 0.9);
+    background: #f5f3f3;
     width: 150px;
     border-radius: 5px;
     padding: 10px;
@@ -185,7 +183,6 @@ footer {
     display: block;
   }
 }
-
 
 /* Responsive Adjustments */
 @media (min-width: 576px) {
