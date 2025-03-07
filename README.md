@@ -1,10 +1,6 @@
+# Project Registration Form
+
 Here’s a well-structured **README.md** file for your **Project Registration Form** built with **React.js, Redux, HTML, CSS, JavaScript, and Bootstrap**.  
-
----
-
-### **📌 README.md – Project Registration Form**
-```md
-# 🚀 Project Registration Form
 
 ## 📖 Overview
 This is a **fully functional Project Registration Form** built using **React.js, Redux, JavaScript, HTML, CSS, and Bootstrap**. The form allows users to **register their projects**, manage state effectively, and ensure a smooth user experience with validation and responsiveness.
