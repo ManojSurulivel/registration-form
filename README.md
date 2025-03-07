@@ -46,5 +46,3 @@ The app will run on **http://localhost:5173/**
 ✔ **Includes Setup Instructions** – Helps users run your project easily.  
 ✔ **Highlights Tech Stack & Features** – Gives clarity on project scope.  
 ✔ **Provides Deployment & Contribution Guidelines** – Makes it collaborative.  
-
-Would you like me to **add API details or improve styling instructions**? 😊🚀
