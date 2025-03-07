@@ -11,7 +11,7 @@ const Registration = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [showPopup, setShowPopup] = useState(false); // Popup for success message
+  const [showPopup, setShowPopup] = useState(false); 
 
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
@@ -75,7 +75,7 @@ const Registration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      setShowPopup(true); // Show success popup
+      setShowPopup(true); 
       setFormData({
         username: "",
         email: "",
