@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./App.css";
+import "../App.css";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
