@@ -11,8 +11,8 @@ const Registration = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [showPopup, setShowPopup] = useState(false); // Popup for success message
 
-  // Function to calculate age from DOB
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
     const today = new Date();
@@ -30,44 +30,38 @@ const Registration = () => {
     const today = new Date();
     const inputDate = new Date(formData.dob);
 
-    // Username validation
     if (!formData.username.trim()) {
       newErrors.username = "Username is required.";
     }
 
-    // Email validation
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Invalid email format.";
     }
 
-    // Password validation
     if (!formData.password) {
       newErrors.password = "Password is required.";
     } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters long.";
     }
 
-    // Confirm Password validation
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = "Please confirm your password.";
     } else if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
     }
 
-    // Date of Birth validation
     if (!formData.dob) {
       newErrors.dob = "Date of birth is required.";
     } else if (inputDate > today) {
-      alert("Date of birth cannot be a future date.");
-      return false; // Stops form submission immediately
+      newErrors.dob = "Date of birth cannot be in the future.";
     } else if (calculateAge(formData.dob) < 18) {
       newErrors.dob = "You must be at least 18 years old.";
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Returns true if no errors
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleChange = (e) => {
@@ -75,14 +69,13 @@ const Registration = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setErrors({ ...errors, [e.target.name]: "" }); // Clear error when typing
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted successfully!", formData);
-      alert("Registration Successful!");
+      setShowPopup(true); // Show success popup
       setFormData({
         username: "",
         email: "",
@@ -95,7 +88,9 @@ const Registration = () => {
   };
 
   return (
-    <div className="registration-container">
+    
+    <div className="registration-wrapper">
+      <div className="registration-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-wrapper">
@@ -160,7 +155,21 @@ const Registration = () => {
 
         <button type="submit" className="styled-button">Register</button>
       </form>
+
+      {/* Success Popup Modal */}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-box">
+            <h3>Registration Successful!</h3>
+            <p>Thank you for registering. Your details have been submitted successfully.</p>
+            <button onClick={() => setShowPopup(false)} className="close-button">OK</button>
+          </div>
+        </div>
+      )}
     </div>
+
+    </div>
+ 
   );
 };
 

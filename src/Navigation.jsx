@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
+import "./App.css";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ const Navigation = () => {
 
   return (
     <nav className="navbar" >
-      <div className="nav-container">
+      <header className="nav-container">
         <Link className="navbar-brand" to="/">Logo</Link>
 
         <button className="nav-toggle" onClick={toggleNavbar}>
@@ -28,7 +28,7 @@ const Navigation = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </header>
     </nav>
   );
 };
