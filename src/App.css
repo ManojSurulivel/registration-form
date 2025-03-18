@@ -2,6 +2,7 @@ body, html {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to right, #6a11cb, #2575fc);
   width: 100%;
+  height: 110vh;
   color: rgba(255, 255, 255, 0.87);
   text-rendering: optimizeLegibility;
 }
