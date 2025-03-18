@@ -8,10 +8,15 @@ const Registration = () => {
     password: "",
     confirmPassword: "",
     dob: "",
+    mobile: "",
   });
 
   const [errors, setErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false); 
+
+  const spread = [1,2,3,4,5];
+  const operator = [...spread]
+  console.log(operator)
 
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
@@ -59,17 +64,34 @@ const Registration = () => {
     } else if (calculateAge(formData.dob) < 18) {
       newErrors.dob = "You must be at least 18 years old.";
     }
+    
+ 
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required.";
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      newErrors.mobile = "Enter a valid 10-digit mobile number.";
+    }
+  
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+
   const handleChange = (e) => {
+    const { name, value } = e.target;
+  
+    // Prevent non-numeric input in the mobile field
+    if (name === "mobile" && !/^\d*$/.test(value)) {
+      return;
+    }
+  
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
-    setErrors({ ...errors, [e.target.name]: "" });
+  
+    setErrors({ ...errors, [name]: "" });
   };
 
   const handleSubmit = (e) => {
@@ -82,6 +104,7 @@ const Registration = () => {
         password: "",
         confirmPassword: "",
         dob: "",
+        mobile: "",
       });
       setErrors({});
     }
@@ -153,6 +176,22 @@ const Registration = () => {
           />
           {errors.dob && <p className="error-text">{errors.dob}</p>}
         </div>
+        
+        <div className="form-wrapper">
+          <label htmlFor="mobile">Mobile Number</label>
+          <input 
+            type="tel" 
+            name="mobile" 
+            value={formData.mobile} 
+            onChange={handleChange} 
+            placeholder="Enter your mobile number"
+            maxLength="10"
+            className="styled-input"
+          />
+          {errors.mobile && <p className="error-text">{errors.mobile}</p>}
+        </div>
+        
+
 
         <button type="submit" className="styled-button">Register</button>
       </form>
